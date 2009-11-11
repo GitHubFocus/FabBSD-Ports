@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head><title>FabBSD ports collection</title></head>
+<body>
+
+<h1>FabBSD ports collection</h1>
+
+<h2>Description</h2>
+%%DESCR%%
+
+<h2>Sub directories</h2>
+<dl COMPACT>
+%%SUBDIR%%
+</dl>
+
+</body></html>

@@ -1,0 +1,12 @@
+$FabBSD$
+--- src/m/mips.h.orig	Tue Apr 14 20:25:47 2009
++++ src/m/mips.h	Tue Apr 14 20:25:52 2009
+@@ -139,7 +139,7 @@ NOTE-END  */
+ #define LD_SWITCH_MACHINE -D 800000
+ #define LIBS_DEBUG
+ 
+-#if defined (__NetBSD__) || defined (__OpenBSD__)
++#if defined (__NetBSD__) || defined (__OpenBSD__) || defined(__FabBSD__)
+ #else  /* bsd with elf */
+ #define LINKER /bsd43/bin/ld
+ 

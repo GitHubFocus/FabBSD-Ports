@@ -1,0 +1,28 @@
+$FabBSD$
+$OpenBSD: user.list,v 1.92 2008/07/27 21:30:05 sthen Exp $
+
+This file lists all users and groups that are created by ports or that
+users are encouraged to create after installing a port (these are marked
+'noauto'). All ports' users/groups have to start with an underscore and
+have to use a fixed uid/gid. If a user/group pair is created, they share
+the same uid/gid. If a user is member of a system group, leave the group
+entry empty. If only a group is created, leave the user entry empty.
+
+id  user		group		port options
+----------------------------------------------------
+502 _mysql		_mysql		databases/mysql,-server
+503 _postgresql		_postgresql	databases/postgresql,-server
+507 _postfix		_postfix	mail/postfix/{snapshot,stable}
+508			_postdrop	mail/postfix/{snapshot,stable}
+517 _wnn				japanese/Wnn
+528 _stunnel		_stunnel	security/stunnel
+535 _symon		_symon		sysutils/symon
+541 _cups		_cups		print/cups
+547 _kismet		_kismet		net/kismet
+551 _gpsd				misc/gpsd
+558 _ipfreely		_ipfreely	net/ipfreely
+576 _apache2		_apache2	www/apache-httpd
+585 _lighttpd		_lighttpd	www/lighttpd
+589 _sdpd		_sdpd		net/bluetooth-tools
+590 _smsd		_smsd		comms/smstools
+601 _unbound		_unbound	net/unbound

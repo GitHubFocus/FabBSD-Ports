@@ -1,0 +1,190 @@
+$OpenBSD: patch-configure,v 1.4 2008/04/11 18:55:43 steven Exp $
+--- configure.orig	Fri Feb  1 12:38:42 2008
++++ configure	Tue Apr 14 00:52:53 2009
+@@ -5217,6 +5217,10 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
++fabbsd*)
++  lt_cv_deplibs_check_method='match_pattern /lib[^/]+(\.so\.[0-9]+\.[0-9]+|\.so|_pic\.a)$'
++  ;;
++
+ freebsd* | dragonfly*)
+   if echo __ELF__ | $CC -E - | grep __ELF__ > /dev/null; then
+     case $host_cpu in
+@@ -6773,7 +6777,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
++  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | fabbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -9094,6 +9098,19 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+       hardcode_libdir_flag_spec='-L$libdir'
+       hardcode_shlibpath_var=no
+       ;;
++    
++    fabbsd*)
++      if test -f /usr/libexec/ld.so; then
++	hardcode_direct=yes
++	hardcode_shlibpath_var=no
++	archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
++	archive_expsym_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags ${wl}-retain-symbols-file,$export_symbols'
++	hardcode_libdir_flag_spec='${wl}-rpath,$libdir'
++	export_dynamic_flag_spec='${wl}-E'
++      else
++	ld_shlibs=no
++      fi
++      ;;
+ 
+     freebsd1*)
+       ld_shlibs=no
+@@ -9574,6 +9591,13 @@ BEGIN {RS=" "; FS="/|\n";} {
+ else
+   sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
+ fi
++tmp="$sys_lib_search_path_spec"
++sys_lib_search_path_spec=""
++for i in $tmp
++do
++    test -d $i && sys_lib_search_path_spec="$sys_lib_search_path_spec $i"
++done
++
+ need_lib_prefix=unknown
+ hardcode_into_libs=no
+ 
+@@ -9744,6 +9768,17 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
++fabbsd*)
++  version_type=sunos
++  sys_lib_dlsearch_path_spec="/usr/lib"
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
++  finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=yes
++  ;;
++
+ freebsd1*)
+   dynamic_linker=no
+   ;;
+@@ -12171,6 +12206,20 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+ 	;;
+     esac
+     ;;
++  fabbsd*)
++    if test -f /usr/libexec/ld.so; then
++      hardcode_direct_CXX=yes
++      hardcode_shlibpath_var_CXX=no
++      archive_cmds_CXX='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $lib'
++      hardcode_libdir_flag_spec_CXX='${wl}-rpath,$libdir'
++      archive_expsym_cmds_CXX='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-retain-symbols-file,$export_symbols -o $lib'
++      export_dynamic_flag_spec_CXX='${wl}-E'
++      whole_archive_flag_spec_CXX="$wlarc"'--whole-archive$convenience '"$wlarc"'--no-whole-archive'
++      output_verbose_link_cmd='echo'
++    else
++      ld_shlibs_CXX=no
++    fi
++    ;;
+   freebsd[12]*)
+     # C++ shared libraries reported to be fairly broken before switch to ELF
+     ld_shlibs_CXX=no
+@@ -13711,6 +13760,17 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
++fabbsd*)
++  version_type=sunos
++  sys_lib_dlsearch_path_spec="/usr/lib"
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
++  finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=yes
++  ;;
++
+ freebsd1*)
+   dynamic_linker=no
+   ;;
+@@ -15734,6 +15794,19 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+       hardcode_libdir_flag_spec_F77='-L$libdir'
+       hardcode_shlibpath_var_F77=no
+       ;;
++    
++    fabbsd*)
++      if test -f /usr/libexec/ld.so; then
++	hardcode_direct_F77=yes
++	hardcode_shlibpath_var_F77=no
++	archive_cmds_F77='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
++	archive_expsym_cmds_F77='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags ${wl}-retain-symbols-file,$export_symbols'
++	hardcode_libdir_flag_spec_F77='${wl}-rpath,$libdir'
++	export_dynamic_flag_spec_F77='${wl}-E'
++      else
++	ld_shlibs_F77=no
++      fi
++      ;;
+ 
+     freebsd1*)
+       ld_shlibs_F77=no
+@@ -16332,6 +16405,17 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
++fabbsd*)
++  version_type=sunos
++  sys_lib_dlsearch_path_spec="/usr/lib"
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
++  finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=yes
++  ;;
++
+ freebsd1*)
+   dynamic_linker=no
+   ;;
+@@ -18359,6 +18443,19 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+       hardcode_libdir_flag_spec_GCJ='-L$libdir'
+       hardcode_shlibpath_var_GCJ=no
+       ;;
++    
++    fabbsd*)
++      if test -f /usr/libexec/ld.so; then
++	hardcode_direct_GCJ=yes
++	hardcode_shlibpath_var_GCJ=no
++	archive_cmds_GCJ='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
++	archive_expsym_cmds_GCJ='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags ${wl}-retain-symbols-file,$export_symbols'
++	hardcode_libdir_flag_spec_GCJ='${wl}-rpath,$libdir'
++	export_dynamic_flag_spec_GCJ='${wl}-E'
++      else
++	ld_shlibs_GCJ=no
++      fi
++      ;;
+ 
+     freebsd1*)
+       ld_shlibs_GCJ=no
+@@ -18955,6 +19052,17 @@ dgux*)
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname$shared_ext'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   shlibpath_var=LD_LIBRARY_PATH
++  ;;
++
++fabbsd*)
++  version_type=sunos
++  sys_lib_dlsearch_path_spec="/usr/lib"
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
++  finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=yes
+   ;;
+ 
+ freebsd1*)

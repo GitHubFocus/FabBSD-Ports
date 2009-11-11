@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Python/dynload_shlib.c.orig	Tue Apr 14 06:38:15 2009
++++ Python/dynload_shlib.c	Tue Apr 14 06:38:44 2009
+@@ -24,7 +24,7 @@
+ #endif
+ #endif
+ 
+-#if (defined(__OpenBSD__) || defined(__NetBSD__)) && !defined(__ELF__)
++#if (defined(__OpenBSD__) || defined(__NetBSD__) || defined(__FabBSD__)) && !defined(__ELF__)
+ #define LEAD_UNDERSCORE "_"
+ #else
+ #define LEAD_UNDERSCORE ""

@@ -1,0 +1,23 @@
+$OpenBSD$
+--- www/project_packages.html.orig	Tue Apr 14 07:19:13 2009
++++ www/project_packages.html	Tue Apr 14 07:21:31 2009
+@@ -187,6 +187,19 @@ href="http://www.openbsd.org/cgi-bin/cvsweb.cgi/ports/
+ 
+ </div>
+ 
++<div class="h3" id="fabbsd" title="fabbsd">
++<h3>FabBSD</h3>
++
++<p><em>Maintainer: Julien Nadeau</em></p>
++
++<p>Information about the latest port can be found here: <a
++href="http://www.fabbsd.org/ports.html">http://fabbsd.org/ports.html</a></p>
++
++<p>Assuming your ports tree is up-to-date, just do:</p>
++<pre>cd /usr/ports/devel/subversion; make install</pre>
++
++</div>
++
+ <div class="h3" id="pkgsrc" title="pkgsrc">
+ <h3><img alt="" src="images/bsddaemon.png" width="40" height="40"
+     />pkgsrc ({Net,Open,Free}BSD, Linux, Solaris, etc.)</h3>

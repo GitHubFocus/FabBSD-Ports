@@ -1,0 +1,12 @@
+$OpenBSD: patch-arcdata_c,v 1.2 2005/10/13 18:05:20 naddy Exp $
+--- arcdata.c.orig	Thu Oct 30 22:22:36 2003
++++ arcdata.c	Wed Apr 15 00:59:41 2009
+@@ -35,7 +35,7 @@ char            tmpchr[2] = "-";/* Temporary file pref
+ #if	GEMDOS
+ int		hold = 0;	/* true to pause before exit */
+ #endif
+-int             warn = 1;	/* true to print warnings */
++int             arcwarn = 1;	/* true to print warnings */
+ int             note = 1;	/* true to print comments */
+ int             bose = 0;	/* true to be verbose */
+ int             nocomp = 0;	/* true to suppress compression */

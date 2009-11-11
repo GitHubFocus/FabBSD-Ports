@@ -1,0 +1,14 @@
+$OpenBSD: patch-libdb_java_java_util_i,v 1.2 2007/10/26 14:06:02 steven Exp $
+--- libdb_java/java_util.i.orig	Thu Jun 28 11:23:38 2007
++++ libdb_java/java_util.i	Sat Apr 25 18:05:45 2009
+@@ -33,6 +33,10 @@
+ 						throw e;
+ 					}
+ 				}
++			} else if (os != null && os.startsWith("OpenBSD")) {
++				System.loadLibrary("db_java");
++			} else if (os != null && os.startsWith("FabBSD")) {
++				System.loadLibrary("db_java");
+ 			} else {
+ 				/*
+ 				 * On UNIX, library name is something like

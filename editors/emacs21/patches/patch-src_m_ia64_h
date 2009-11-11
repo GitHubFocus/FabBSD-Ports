@@ -1,0 +1,12 @@
+$FabBSD$
+--- src/m/ia64.h.orig	Tue Apr 14 19:40:37 2009
++++ src/m/ia64.h	Tue Apr 14 19:40:43 2009
+@@ -147,7 +147,7 @@ Boston, MA 02111-1307, USA.  */
+ 
+ #ifndef NOT_C_CODE
+ /* We need these because pointers are larger than the default ints.  */
+-# if !defined(__NetBSD__) && !defined(__OpenBSD__)
++# if !defined(__NetBSD__) && !defined(__OpenBSD__) && !defined(__FabBSD__)
+ #  include <alloca.h>
+ # else
+ #  include <stdlib.h>

@@ -1,0 +1,12 @@
+$FabBSD$
+--- build/apr_hints.m4.orig	Sat Apr 25 19:42:51 2009
++++ build/apr_hints.m4	Sat Apr 25 19:43:05 2009
+@@ -145,7 +145,7 @@ dnl	       # Not a problem in 10.20.  Otherwise, who k
+                 ;;
+         esac
+         ;;
+-    *-openbsd*)
++    *-openbsd* | *-fabbsd*)
+ 	APR_ADDTO(CPPFLAGS, [-D_POSIX_THREADS])
+         # binding to an ephemeral port fails on OpenBSD so override
+         # the test for O_NONBLOCK inheritance across accept().

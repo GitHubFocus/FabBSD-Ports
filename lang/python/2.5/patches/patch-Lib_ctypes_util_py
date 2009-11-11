@@ -1,0 +1,11 @@
+$OpenBSD$
+--- Lib/ctypes/util.py.orig	Tue Apr 14 06:50:09 2009
++++ Lib/ctypes/util.py	Tue Apr 14 06:50:21 2009
+@@ -90,6 +90,7 @@ elif os.name == "posix":
+ 
+     if (sys.platform.startswith("freebsd")
+         or sys.platform.startswith("openbsd")
++        or sys.platform.startswith("fabbsd")
+         or sys.platform.startswith("dragonfly")):
+ 
+         def _num_version(libname):

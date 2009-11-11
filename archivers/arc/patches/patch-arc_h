@@ -1,0 +1,12 @@
+$OpenBSD: patch-arc_h,v 1.2 2005/10/13 18:05:20 naddy Exp $
+--- arc.h.orig	Thu Oct 30 22:22:36 2003
++++ arc.h	Wed Apr 15 00:59:41 2009
+@@ -106,7 +106,7 @@ extern char     tmpchr[2];	/* Temporary file prefix, d
+ #if	GEMDOS
+ extern int      hold;		/* hold screen before exiting */
+ #endif
+-extern int      warn;		/* true to print warnings */
++extern int      arcwarn;	/* true to print warnings */
+ extern int      note;		/* true to print comments */
+ extern int      bose;		/* true to be verbose */
+ extern int      nocomp;		/* true to suppress compression */

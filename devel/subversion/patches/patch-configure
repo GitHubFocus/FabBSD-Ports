@@ -1,0 +1,129 @@
+$OpenBSD: patch-configure,v 1.9 2007/10/25 10:00:03 steven Exp $
+--- configure.orig	Tue Apr 14 07:25:32 2009
++++ configure	Tue Apr 14 07:26:43 2009
+@@ -3012,7 +3012,7 @@ if test "$INSTALL" = "build/install-sh -c"; then
+   INSTALL="$abs_srcdir/$INSTALL"
+ fi
+ 
+-MKDIR="$INSTALL -d"
++MKDIR="/bin/mkdir -p"
+ 
+ 
+ 
+@@ -5550,7 +5550,7 @@ nto-qnx*)
+   lt_cv_deplibs_check_method=unknown
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+     lt_cv_deplibs_check_method='match_pattern /lib[^/]+(\.so\.[0-9]+\.[0-9]+|\.so|_pic\.a)$'
+   else
+@@ -6855,7 +6855,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
++  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | fabbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -8917,7 +8917,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+       hardcode_shlibpath_var=no
+       ;;
+ 
+-    openbsd*)
++    openbsd* | fabbsd*)
+       hardcode_direct=yes
+       hardcode_shlibpath_var=no
+       if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+@@ -9631,7 +9631,7 @@ nto-qnx*)
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   version_type=sunos
+   sys_lib_dlsearch_path_spec="/usr/lib"
+   need_lib_prefix=no
+@@ -12142,7 +12142,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+     # C++ shared libraries are fairly broken
+     ld_shlibs_CXX=no
+     ;;
+-  openbsd*)
++  openbsd* | fabbsd*)
+     hardcode_direct_CXX=yes
+     hardcode_shlibpath_var_CXX=no
+     archive_cmds_CXX='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $lib'
+@@ -13591,7 +13591,7 @@ nto-qnx*)
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   version_type=sunos
+   sys_lib_dlsearch_path_spec="/usr/lib"
+   need_lib_prefix=no
+@@ -15464,7 +15464,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+       hardcode_shlibpath_var_F77=no
+       ;;
+ 
+-    openbsd*)
++    openbsd* | fabbsd*)
+       hardcode_direct_F77=yes
+       hardcode_shlibpath_var_F77=no
+       if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+@@ -16178,7 +16178,7 @@ nto-qnx*)
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   version_type=sunos
+   sys_lib_dlsearch_path_spec="/usr/lib"
+   need_lib_prefix=no
+@@ -18063,7 +18063,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:
+       hardcode_shlibpath_var_GCJ=no
+       ;;
+ 
+-    openbsd*)
++    openbsd* | fabbsd*)
+       hardcode_direct_GCJ=yes
+       hardcode_shlibpath_var_GCJ=no
+       if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+@@ -18777,7 +18777,7 @@ nto-qnx*)
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   version_type=sunos
+   sys_lib_dlsearch_path_spec="/usr/lib"
+   need_lib_prefix=no
+@@ -20630,7 +20630,7 @@ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
+ if test "$ac_cv_search_bindtextdomain" = no; then
+   for ac_lib in intl; do
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    LIBS="-l$ac_lib  -liconv $ac_func_search_save_LIBS"
+     cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -20675,7 +20675,7 @@ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_search_bindtextdomain="-l$ac_lib"
++  ac_cv_search_bindtextdomain="-l$ac_lib -liconv"
+ break
+ else
+   echo "$as_me: failed program was:" >&5
+@@ -21964,7 +21964,7 @@ fi;
+ # Python: Used for testsuite, and bindings
+ 
+ 
+-PYTHON="`$abs_srcdir/build/find_python.sh`"
++PYTHON="python!!MODPY_VERSION!!"
+ if test -z "$PYTHON"; then
+   { echo "$as_me:$LINENO: WARNING: Python 2.0 or later is required to run the testsuite" >&5
+ echo "$as_me: WARNING: Python 2.0 or later is required to run the testsuite" >&2;}

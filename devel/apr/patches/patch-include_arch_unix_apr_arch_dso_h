@@ -1,0 +1,11 @@
+$FabBSD$
+--- include/arch/unix/apr_arch_dso.h.orig	Sat Apr 25 19:40:56 2009
++++ include/arch/unix/apr_arch_dso.h	Sat Apr 25 19:41:08 2009
+@@ -48,6 +48,7 @@
+ #if (defined(__DragonFly__) ||\
+      defined(__FreeBSD__) ||\
+      defined(__OpenBSD__) ||\
++     defined(__FabBSD__) ||\
+      defined(__NetBSD__)     ) && !defined(__ELF__)
+ #define DLSYM_NEEDS_UNDERSCORE
+ #endif

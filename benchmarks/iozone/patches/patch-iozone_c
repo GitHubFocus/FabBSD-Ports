@@ -1,0 +1,20 @@
+$OpenBSD: patch-iozone_c,v 1.6 2003/09/30 10:25:34 naddy Exp $
+--- iozone.c.orig	Wed Apr 15 08:34:56 2009
++++ iozone.c	Wed Apr 15 08:34:20 2009
+@@ -238,11 +238,14 @@ THISVERSION,
+ #include <unistd.h>
+ 
+ #include <fcntl.h>
+-#if !defined(__FreeBSD__) && !defined(__OpenBSD__) && !defined(__APPLE__)
++#if !defined(__FreeBSD__) && !defined(__OpenBSD__) && !defined(__FabBSD__) && !defined(__APPLE__)
+ #include <malloc.h>
++#else
++#include <stdlib.h>
++#include <string.h>
+ #endif
+ 
+-#if defined (__FreeBSD__) || defined(__OpenBSD__) || defined(__bsdi__) || defined(__APPLE__)
++#if defined (__FreeBSD__) || defined(__OpenBSD__) || defined(__FabBSD__) || defined(__bsdi__) || defined(__APPLE__)
+ #ifndef O_SYNC
+ #define O_SYNC O_FSYNC
+ #endif

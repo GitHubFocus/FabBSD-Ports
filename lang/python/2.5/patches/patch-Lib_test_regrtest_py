@@ -1,0 +1,44 @@
+$OpenBSD: patch-Lib_test_regrtest_py,v 1.2 2007/04/24 23:32:47 djm Exp $
+--- Lib/test/regrtest.py.orig	Thu Mar  8 15:58:46 2007
++++ Lib/test/regrtest.py	Tue Apr 14 06:49:51 2009
+@@ -1310,10 +1310,40 @@ _expectations = {
+         test_winreg
+         test_winsound
+         """,
++    'fabbsd1':
++        """
++        test_aepack
++        test_al
++        test_applesingle
++        test_bsddb
++        test_bsddb3
++        test_cd
++        test_cl
++        test_ctypes
++        test_dl
++        test_gdbm
++        test_gl
++        test_imgfile
++        test_locale
++        test_macfs
++        test_macostools
++        test_nis
++        test_normalization
++        test_pep277
++        test_plistlib
++        test_scriptpackages
++        test_tcl
++        test_sqlite
++        test_startfile
++        test_unicode_file
++        test_winreg
++        """,
+ }
+ _expectations['freebsd5'] = _expectations['freebsd4']
+ _expectations['freebsd6'] = _expectations['freebsd4']
+ _expectations['freebsd7'] = _expectations['freebsd4']
++
++_expectations['openbsd4'] = _expectations['openbsd3']
+ 
+ class _ExpectedSkips:
+     def __init__(self):

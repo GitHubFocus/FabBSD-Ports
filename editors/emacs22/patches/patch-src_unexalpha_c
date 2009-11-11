@@ -1,0 +1,39 @@
+$FabBSD$
+--- src/unexalpha.c.orig	Tue Apr 14 20:26:40 2009
++++ src/unexalpha.c	Tue Apr 14 20:26:59 2009
+@@ -31,7 +31,7 @@ Boston, MA 02110-1301, USA.  */
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+ #endif
+-#if !defined (__NetBSD__) && !defined (__OpenBSD__)
++#if !defined (__NetBSD__) && !defined (__OpenBSD__) && !defined (__FabBSD__)
+ #include <filehdr.h>
+ #include <aouthdr.h>
+ #include <scnhdr.h>
+@@ -40,7 +40,7 @@ Boston, MA 02110-1301, USA.  */
+ # include <reloc.h>
+ # include <elf_abi.h>
+ #endif
+-#else /* __NetBSD__ or __OpenBSD__ */
++#else /* __NetBSD__ or __OpenBSD__ or __FabBSD__ */
+ /*
+  * NetBSD/Alpha does not have 'normal' user-land ECOFF support because
+  * there's no desire to support ECOFF as the executable format in the
+@@ -55,7 +55,7 @@ Boston, MA 02110-1301, USA.  */
+ #define	HDRR		struct ecoff_symhdr
+ #define	pHDRR		HDRR *
+ #define	cbHDRR		sizeof(HDRR)
+-#ifdef __OpenBSD__
++#if defined(__OpenBSD__) || defined(__FabBSD__)
+ #define	ALPHAMAGIC	ECOFF_MAGIC_NATIVE_ALPHA
+ #else
+ #define	ALPHAMAGIC	ECOFF_MAGIC_NETBSD_ALPHA
+@@ -79,7 +79,7 @@ Boston, MA 02110-1301, USA.  */
+ #define	_RDATA		".rdata"
+ #define	_SDATA		".sdata"
+ #define	_SBSS		".sbss"
+-#endif /* __NetBSD__ || __OpenBSD__ */
++#endif /* __NetBSD__ || __OpenBSD__ || __FabBSD__ */
+ 
+ static void fatal_unexec __P ((char *, char *));
+ static void mark_x __P ((char *));

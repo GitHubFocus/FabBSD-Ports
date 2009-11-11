@@ -1,0 +1,17 @@
+$FabBSD$
+--- src/m/macppc.h.orig	Tue Apr 14 20:25:29 2009
++++ src/m/macppc.h	Tue Apr 14 20:25:42 2009
+@@ -70,11 +70,11 @@ Boston, MA 02110-1301, USA.  */
+ 
+ #define NO_TERMIO
+ 
+-#if defined (LINUX) || defined (__NetBSD__) || defined (__OpenBSD__)
++#if defined (LINUX) || defined (__NetBSD__) || defined (__OpenBSD__) || defined(__FabBSD__)
+ # define TEXT_END ({ extern int _etext; &_etext; })
+ #endif
+ 
+-#if (defined (__NetBSD__) || defined (__OpenBSD__)) && defined (__ELF__)
++#if (defined (__NetBSD__) || defined (__OpenBSD__) || defined(__FabBSD__)) && defined (__ELF__)
+ #define HAVE_TEXT_START
+ #endif
+ 

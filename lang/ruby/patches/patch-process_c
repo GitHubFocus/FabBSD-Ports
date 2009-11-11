@@ -1,0 +1,12 @@
+$OpenBSD$
+--- process.c.orig	Tue Apr 14 04:44:40 2009
++++ process.c	Tue Apr 14 04:44:49 2009
+@@ -86,7 +86,7 @@ static VALUE S_Tms;
+ #define __MacOS_X__ 1
+ #endif
+ 
+-#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__bsdi__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__FabBSD__) || defined(__bsdi__)
+ #define HAVE_44BSD_SETUID 1
+ #define HAVE_44BSD_SETGID 1
+ #endif

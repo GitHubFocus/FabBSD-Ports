@@ -1,0 +1,13 @@
+$FabBSD$
+--- config.guess.orig	Tue Apr 14 19:26:35 2009
++++ config.guess	Tue Apr 14 19:27:11 2009
+@@ -246,6 +246,9 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE
+     *:MirBSD:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-mirbsd${UNAME_RELEASE}
+ 	exit ;;
++    *:FabBSD:*:*)
++	echo ${UNAME_MACHINE}-unknown-fabbsd${UNAME_RELEASE}
++	exit ;;
+     alpha:OSF1:*:*)
+ 	case $UNAME_RELEASE in
+ 	*4.0)

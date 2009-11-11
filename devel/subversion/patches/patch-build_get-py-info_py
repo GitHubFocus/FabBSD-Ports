@@ -1,0 +1,12 @@
+$OpenBSD$
+--- build/get-py-info.py.orig	Tue Apr 14 07:22:05 2009
++++ build/get-py-info.py	Tue Apr 14 07:22:49 2009
+@@ -84,7 +84,7 @@ def link_options():
+       sysconfig.get_config_var('PYTHON'))
+     add_option_if_missing(options, "-bundle_loader", python_exe)
+ 
+-  elif sys.platform == 'cygwin' or sys.platform.startswith('openbsd'):
++  elif sys.platform == 'cygwin' or sys.platform.startswith('openbsd') or sys.platform.startswith('fabbsd'):
+ 
+     # Add flags to build against the Python library (also necessary
+     # for Darwin, but handled elsewhere).

@@ -1,0 +1,21 @@
+$FabBSD$
+--- config.rpath.orig	Tue Apr 14 20:52:23 2009
++++ config.rpath	Tue Apr 14 20:52:49 2009
+@@ -271,7 +271,7 @@ else
+       hardcode_libdir_flag_spec='${wl}-rpath ${wl}$libdir'
+       hardcode_libdir_separator=:
+       ;;
+-    openbsd*)
++    openbsd* | fabbsd*)
+       hardcode_direct=yes
+       if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+         hardcode_libdir_flag_spec='${wl}-rpath,$libdir'
+@@ -430,7 +430,7 @@ case "$host_os" in
+   newsos6)
+     shlibext=so
+     ;;
+-  openbsd*)
++  openbsd* | fabbsd*)
+     shlibext=so
+     ;;
+   os2*)

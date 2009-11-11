@@ -1,0 +1,16 @@
+$OpenBSD: patch-Lib_test_test_tempfile_py,v 1.1 2006/11/01 20:59:18 alek Exp $
+--- Lib/test/test_tempfile.py.orig	Tue Apr 14 06:49:58 2009
++++ Lib/test/test_tempfile.py	Tue Apr 14 06:47:19 2009
+@@ -27,10 +27,10 @@ has_spawnl = hasattr(os, 'spawnl')
+ # number of files that can be opened at one time (see ulimit -n)
+ if sys.platform == 'mac':
+     TEST_FILES = 32
+-elif sys.platform in ('openbsd3', 'openbsd4'):
++elif sys.platform in ('openbsd3', 'openbsd4', 'fabbsd1'):
+     TEST_FILES = 48
+ else:
+-    TEST_FILES = 100
++    TEST_FILES = 48
+ 
+ # This is organized as one test for each chunk of code in tempfile.py,
+ # in order of their appearance in the file.  Testing which requires

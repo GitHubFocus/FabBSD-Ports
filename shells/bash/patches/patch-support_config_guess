@@ -1,0 +1,13 @@
+$FabBSD$
+--- support/config.guess.orig	Tue Apr 14 17:54:23 2009
++++ support/config.guess	Tue Apr 14 17:54:35 2009
+@@ -234,6 +234,9 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE
+     *:OpenBSD:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-openbsd${UNAME_RELEASE}
+ 	exit 0 ;;
++    *:FabBSD:*:*)
++	echo ${UNAME_MACHINE}-unknown-fabbsd${UNAME_RELEASE}
++	exit 0 ;;
+     alpha:OSF1:*:*)
+ 	if test $UNAME_RELEASE = "V4.0"; then
+ 		UNAME_RELEASE=`/usr/sbin/sizer -v | awk '{print $3}'`

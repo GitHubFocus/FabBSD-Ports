@@ -1,0 +1,16 @@
+$OpenBSD: patch-apr-config_in,v 1.1 2007/10/30 16:55:48 steven Exp $
+--- apr-config.in.orig	Fri Jun 20 12:46:25 2008
++++ apr-config.in	Sat Jul  4 22:34:46 2009
+@@ -223,11 +223,7 @@ while test $# -gt 0; do
+     exit 0
+     ;;
+     --apr-libtool)
+-    if test "$location" = "installed"; then
+-        echo "${installbuilddir}/libtool"
+-    else
+-        echo "$APR_BUILD_DIR/libtool"
+-    fi
++    echo "@LIBTOOL@"
+     exit 0
+     ;;
+     --help)

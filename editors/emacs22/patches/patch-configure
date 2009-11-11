@@ -1,0 +1,24 @@
+$FabBSD$
+--- configure.orig	Tue Apr 14 20:23:24 2009
++++ configure	Tue Apr 14 20:24:07 2009
+@@ -2276,6 +2276,20 @@ _ACEOF
+     esac
+   ;;
+ 
++  ## FabBSD ports
++  *-*-fabbsd* )
++    opsys=fabbsd
++    case "${canonical}" in
++      alpha*-*-fabbsd*)        machine=alpha ;;
++      arm-*-fabbsd*)           machine=arm ;;
++      i386-*-fabbsd*)          machine=intel386 ;;
++      mips64-*-fabbsd*)        machine=mips64 ;;
++      powerpc-*-fabbsd*)       machine=macppc ;;
++      sparc*-*-fabbsd*)        machine=sparc ;;
++      x86_64-*-fabbsd*)        machine=amdx86-64 ;;
++    esac
++  ;;
++
+   ## LynxOS ports
+   *-*-lynxos* )
+     opsys=lynxos

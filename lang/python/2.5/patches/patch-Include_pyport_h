@@ -1,0 +1,21 @@
+$OpenBSD$
+--- Include/pyport.h.orig	Tue Apr 14 06:35:49 2009
++++ Include/pyport.h	Tue Apr 14 06:36:09 2009
+@@ -430,7 +430,7 @@ extern "C" {
+  * According to Tim's checkin, the FreeBSD systems use isinf() to work
+  * around a FPE bug on that platform.
+  */
+-#if defined(__FreeBSD__) || defined(__OpenBSD__)
++#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__FabBSD__)
+ #define Py_OVERFLOWED(X) isinf(X)
+ #else
+ #define Py_OVERFLOWED(X) ((X) != 0.0 && (errno == ERANGE ||    \
+@@ -447,7 +447,7 @@ extern "C" {
+  *    This isn't reliable.  See Py_OVERFLOWED comments.
+  *    X is evaluated more than once.
+  */
+-#if defined(__FreeBSD__) || defined(__OpenBSD__) || (defined(__hpux) && defined(__ia64))
++#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__FabBSD__) || (defined(__hpux) && defined(__ia64))
+ #define _Py_SET_EDOM_FOR_NAN(X) if (isnan(X)) errno = EDOM;
+ #else
+ #define _Py_SET_EDOM_FOR_NAN(X) ;

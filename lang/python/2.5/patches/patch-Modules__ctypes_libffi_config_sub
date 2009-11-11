@@ -1,0 +1,11 @@
+$OpenBSD$
+--- Modules/_ctypes/libffi/config.sub.orig	Tue Apr 14 06:41:09 2009
++++ Modules/_ctypes/libffi/config.sub	Tue Apr 14 06:41:22 2009
+@@ -1169,6 +1169,7 @@ case $os in
+ 	      | -nindy* | -vxsim* | -vxworks* | -ebmon* | -hms* | -mvs* \
+ 	      | -clix* | -riscos* | -uniplus* | -iris* | -rtu* | -xenix* \
+ 	      | -hiux* | -386bsd* | -knetbsd* | -mirbsd* | -netbsd* | -openbsd* \
++	      | -fabbsd* \
+ 	      | -ekkobsd* | -kfreebsd* | -freebsd* | -riscix* | -lynxos* \
+ 	      | -bosx* | -nextstep* | -cxux* | -aout* | -elf* | -oabi* \
+ 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \

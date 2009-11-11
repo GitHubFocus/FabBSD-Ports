@@ -1,0 +1,12 @@
+--- autoconf/configure.in.orig	Sun Mar 23 03:06:40 2003
++++ autoconf/configure.in	Tue Apr 14 20:13:33 2009
+@@ -107,7 +107,8 @@ slang_minor_version=`echo $slang_version $slang_major_
+ slang_mminor_version=`echo $slang_version $slang_major_version $slang_minor_version |
+  awk '{ print ([$]1 - [$]2*10000 - [$]3*100) }'`
+ 
+-slang_minor_version="$slang_minor_version.$slang_mminor_version"
++slang_major_version=$slang_major_version$slang_minor_version
++slang_minor_version=$slang_mminor_version
+ slang_version="$slang_major_version.$slang_minor_version"
+ AC_MSG_RESULT($slang_version)
+ AC_SUBST(slang_major_version)

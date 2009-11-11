@@ -1,0 +1,81 @@
+$OpenBSD$
+--- libtool.m4.orig	Tue Apr 14 00:53:19 2009
++++ libtool.m4	Tue Apr 14 00:55:39 2009
+@@ -826,7 +826,7 @@ AC_CACHE_VAL([lt_cv_sys_max_cmd_len], [dnl
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
++  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | fabbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -1521,6 +1521,16 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
++fabbsd*)
++  version_type=sunos
++  sys_lib_dlsearch_path_spec="/usr/lib"
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
++  finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
++  shlibpath_overrides_runpath=yes
++  ;;
++
+ freebsd1*)
+   dynamic_linker=no
+   ;;
+@@ -2432,6 +2442,10 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
++fabbsd*)
++  lt_cv_deplibs_check_method='match_pattern /lib[[^/]]+(\.so\.[[0-9]]+\.[[0-9]]+|\.so|_pic\.a)$'
++  ;;
++
+ freebsd* | dragonfly*)
+   if echo __ELF__ | $CC -E - | grep __ELF__ > /dev/null; then
+     case $host_cpu in
+@@ -3212,6 +3226,20 @@ case $host_os in
+ 	;;
+     esac
+     ;;
++  fabbsd*)
++    if test -f /usr/libexec/ld.so; then
++      _LT_AC_TAGVAR(hardcode_direct, $1)=yes
++      _LT_AC_TAGVAR(hardcode_shlibpath_var, $1)=no
++      _LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $lib'
++      _LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-rpath,$libdir'
++      _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-retain-symbols-file,$export_symbols -o $lib'
++      _LT_AC_TAGVAR(export_dynamic_flag_spec, $1)='${wl}-E'
++      _LT_AC_TAGVAR(whole_archive_flag_spec, $1)="$wlarc"'--whole-archive$convenience '"$wlarc"'--no-whole-archive'
++      output_verbose_link_cmd='echo'
++    else
++      _LT_AC_TAGVAR(ld_shlibs, $1)=no
++    fi
++    ;;
+   freebsd[[12]]*)
+     # C++ shared libraries reported to be fairly broken before switch to ELF
+     _LT_AC_TAGVAR(ld_shlibs, $1)=no
+@@ -6094,6 +6122,19 @@ _LT_EOF
+       _LT_AC_TAGVAR(archive_cmds, $1)='$LD -G -h $soname -o $lib $libobjs $deplibs $linker_flags'
+       _LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
+       _LT_AC_TAGVAR(hardcode_shlibpath_var, $1)=no
++      ;;
++    
++    fabbsd*)
++      if test -f /usr/libexec/ld.so; then
++	_LT_AC_TAGVAR(hardcode_direct, $1)=yes
++	_LT_AC_TAGVAR(hardcode_shlibpath_var, $1)=no
++	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
++	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags ${wl}-retain-symbols-file,$export_symbols'
++	_LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-rpath,$libdir'
++	_LT_AC_TAGVAR(export_dynamic_flag_spec, $1)='${wl}-E'
++      else
++	_LT_AC_TAGVAR(ld_shlibs, $1)=no
++      fi
+       ;;
+ 
+     freebsd1*)

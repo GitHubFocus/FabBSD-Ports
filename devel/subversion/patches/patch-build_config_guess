@@ -1,0 +1,13 @@
+$OpenBSD$
+--- build/config.guess.orig	Tue Apr 14 07:21:43 2009
++++ build/config.guess	Tue Apr 14 07:21:55 2009
+@@ -212,6 +212,9 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE
+     *:MirBSD:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-mirbsd${UNAME_RELEASE}
+ 	exit ;;
++    *:FabBSD:*:*)
++	echo ${UNAME_MACHINE}-unknown-fabbsd${UNAME_RELEASE}
++	exit ;;
+     alpha:OSF1:*:*)
+ 	case $UNAME_RELEASE in
+ 	*4.0)

@@ -1,0 +1,12 @@
+$FabBSD$
+--- src/m/pmax.h.orig	Tue Apr 14 19:41:24 2009
++++ src/m/pmax.h	Tue Apr 14 19:41:30 2009
+@@ -27,7 +27,7 @@ NOTE-END  */
+ #define START_FILES pre-crt0.o /usr/lib/cmplrs/cc/crt0.o
+ #endif
+ 
+-#if defined (__NetBSD__) || defined (__OpenBSD__)
++#if defined (__NetBSD__) || defined (__OpenBSD__) || defined(__FabBSD__)
+ #undef START_FILES
+ #undef RUN_TIME_REMAP
+ #undef UNEXEC

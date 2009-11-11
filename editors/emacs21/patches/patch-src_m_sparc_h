@@ -1,0 +1,12 @@
+$FabBSD$
+--- src/m/sparc.h.orig	Tue Apr 14 19:41:41 2009
++++ src/m/sparc.h	Tue Apr 14 19:41:50 2009
+@@ -89,7 +89,7 @@ NOTE-END  */
+ #define PURESIZE 130000
+ #endif
+ 
+-#if !defined (__NetBSD__) && !defined (__linux__) && !defined (__OpenBSD__)
++#if !defined (__NetBSD__) && !defined (__linux__) && !defined (__OpenBSD__) && !defined(__FabBSD__)
+ /* This really belongs in s/sun.h.  */
+ 
+ /* Say that the text segment of a.out includes the header;

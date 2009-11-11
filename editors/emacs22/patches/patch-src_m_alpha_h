@@ -1,0 +1,30 @@
+$FabBSD$
+--- src/m/alpha.h.orig	Tue Apr 14 20:24:44 2009
++++ src/m/alpha.h	Tue Apr 14 20:25:00 2009
+@@ -99,7 +99,7 @@ NOTE-END
+ # endif
+ #endif
+ 
+-#if defined(__OpenBSD__)
++#if defined(__OpenBSD__) || defined(__FabBSD__)
+ #define ORDINARY_LINK
+ #endif
+ 
+@@ -133,7 +133,7 @@ NOTE-END
+    termio and struct termios are mutually incompatible.  */
+ #define NO_TERMIO
+ 
+-#if defined (LINUX) || defined (__NetBSD__) || defined (__OpenBSD__)
++#if defined (LINUX) || defined (__NetBSD__) || defined (__OpenBSD__) || defined(__FabBSD__)
+ # define TEXT_END ({ extern int _etext; &_etext; })
+ # ifndef __ELF__
+ #  define COFF
+@@ -141,7 +141,7 @@ NOTE-END
+ # endif /* notdef __ELF__ */
+ #endif
+ 
+-#if (defined (__NetBSD__) || defined (__OpenBSD__)) && defined (__ELF__)
++#if (defined (__NetBSD__) || defined (__OpenBSD__) || defined(__FabBSD__)) && defined (__ELF__)
+ #define HAVE_TEXT_START
+ #endif
+ 

@@ -1,0 +1,30 @@
+$OpenBSD$
+--- aclocal.m4.orig	Tue Apr 14 03:43:46 2009
++++ aclocal.m4	Tue Apr 14 03:43:59 2009
+@@ -1662,7 +1662,7 @@ else
+     hardcode_shlibpath_var=no
+     ;;
+ 
+-  openbsd*)
++  openbsd* | fabbsd*)
+     hardcode_direct=yes
+     hardcode_shlibpath_var=no
+     if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+@@ -2194,7 +2194,7 @@ newsos6)
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   version_type=sunos
+   need_lib_prefix=no
+   need_version=no
+@@ -3395,7 +3395,7 @@ newos6*)
+   lt_cv_file_magic_test_file=/usr/lib/libnls.so
+   ;;
+ 
+-openbsd*)
++openbsd* | fabbsd*)
+   lt_cv_file_magic_cmd=/usr/bin/file
+   lt_cv_file_magic_test_file=`echo /usr/lib/libc.so.*`
+   if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then

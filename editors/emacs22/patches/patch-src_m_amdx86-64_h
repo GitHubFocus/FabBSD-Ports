@@ -1,0 +1,21 @@
+$FabBSD$
+--- src/m/amdx86-64.h.orig	Tue Apr 14 20:25:10 2009
++++ src/m/amdx86-64.h	Tue Apr 14 20:25:24 2009
+@@ -119,7 +119,7 @@ Boston, MA 02110-1301, USA.  */
+ #undef LIB_STANDARD
+ #define LIB_STANDARD -lgcc -lc -lgcc /usr/lib/crtn.o
+ 
+-#elif defined(__OpenBSD__)
++#elif defined(__OpenBSD__) || defined(__FabBSD__)
+ 
+ #undef START_FILES
+ #define START_FILES pre-crt0.o /usr/lib/crt0.o /usr/lib/crtbegin.o
+@@ -135,7 +135,7 @@ Boston, MA 02110-1301, USA.  */
+ #undef START_FILES
+ #undef LIB_STANDARD
+ 
+-#else /* !__OpenBSD__ && !__FreeBSD__ && !__NetBSD__ && !sun */
++#else /* !__OpenBSD__ && !__FreeBSD__ && !__NetBSD__ && !__FabBSD__ && !sun */
+ 
+ #undef START_FILES
+ #ifdef HAVE_X86_64_LIB64_DIR

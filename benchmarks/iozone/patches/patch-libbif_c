@@ -1,0 +1,12 @@
+$OpenBSD: patch-libbif_c,v 1.1 2003/09/30 10:25:34 naddy Exp $
+--- libbif.c.orig	Fri Sep 26 11:39:44 2003
++++ libbif.c	Wed Apr 15 08:34:53 2009
+@@ -20,7 +20,7 @@
+ #include <sys/fcntl.h>
+ #endif
+ 
+-#if defined(OSFV5) || defined(linux)
++#if defined(OSFV5) || defined(linux) || defined(__OpenBSD__) || defined(__FabBSD__)
+ #include <string.h>
+ #endif
+ 

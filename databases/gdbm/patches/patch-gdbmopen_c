@@ -1,0 +1,12 @@
+$OpenBSD: patch-gdbmopen_c,v 1.1 2005/05/18 20:08:35 sturm Exp $
+--- gdbmopen.c.orig	Wed Jan 30 14:39:43 2002
++++ gdbmopen.c	Tue Apr 14 03:40:16 2009
+@@ -100,7 +100,7 @@ gdbm_open (file, block_size, flags, mode, fatal_func)
+       gdbm_errno = GDBM_MALLOC_ERROR;
+       return NULL;
+     }
+-  strcpy (dbf->name, file);
++  strlcpy (dbf->name, file, len + 1);
+ 
+   /* Initialize the fatal error routine. */
+   dbf->fatal_err = fatal_func;

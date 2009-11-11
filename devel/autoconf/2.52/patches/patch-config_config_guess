@@ -1,0 +1,13 @@
+$OpenBSD$
+--- config/config.guess.orig	Mon Apr 13 23:41:57 2009
++++ config/config.guess	Mon Apr 13 23:42:16 2009
+@@ -730,6 +730,9 @@ EOF
+     *:OpenBSD:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-openbsd`echo ${UNAME_RELEASE}|sed -e 's/[-_].*/\./'`
+ 	exit 0 ;;
++    *:FabBSD:*:*)
++	echo ${UNAME_MACHINE}-unknown-fabbsd`echo ${UNAME_RELEASE}|sed -e 's/[-_].*/\./'`
++	exit 0 ;;
+     i*:CYGWIN*:*)
+ 	echo ${UNAME_MACHINE}-pc-cygwin
+ 	exit 0 ;;

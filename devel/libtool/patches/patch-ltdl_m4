@@ -1,0 +1,12 @@
+$OpenBSD$
+--- ltdl.m4.orig	Tue Apr 14 00:56:06 2009
++++ ltdl.m4	Tue Apr 14 00:56:34 2009
+@@ -127,7 +127,7 @@ AC_CACHE_CHECK([whether deplibs are loaded by dlopen],
+     # If you are looking for one http://www.opendarwin.org/projects/dlcompat
+     libltdl_cv_sys_dlopen_deplibs=yes
+     ;;
+-  freebsd* | dragonfly*)
++  freebsd* | fabbsd* | dragonfly*)
+     libltdl_cv_sys_dlopen_deplibs=yes
+     ;;
+   gnu* | linux* | k*bsd*-gnu)
